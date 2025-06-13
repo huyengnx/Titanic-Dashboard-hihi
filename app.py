@@ -6,7 +6,18 @@ import utils
 #한글
 import matplotlib.font_manager as fm
 
-plt.rcParams['font.family'] = 'Malgun Gothic'
+st.markdown("""
+    <style>
+    html, body, [class*="css"]  {
+        font-family: 'Nanum Gothic', sans-serif;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+font_path = './fonts/NanumGothic.ttf'
+fontprop = fm.FontProperties(fname=font_path)
+
+plt.rcParams['font.family'] = fontprop.get_name()
 
 st.set_page_config(page_title="타이타닉 생존자 대시보드", layout="wide")
 st.image("./img/titanic.jpg", caption="타이타닉 - 재난에서 배우는 머신러닝", use_container_width=True)
