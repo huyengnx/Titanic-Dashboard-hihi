@@ -14,16 +14,6 @@ font_path = './font/NanumGothic-Regular.ttf'
 fm.fontManager.addfont(font_path)
 nanum_font = fm.FontProperties(fname=font_path)
 
-old_text_init = mtext.Text.__init__
-
-def new_text_init(self, *args, **kwargs):
-    if 'fontproperties' not in kwargs:
-        kwargs['fontproperties'] = nanum_font
-    old_text_init(self, *args, **kwargs)
-
-mtext.Text.__init__ = new_text_init
-
-# Set font for Streamlit CSS
 st.markdown("""
     <style>
     html, body, [class*="css"]  {
@@ -31,7 +21,6 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
-
 
 # Load datas
 @st.cache_data
