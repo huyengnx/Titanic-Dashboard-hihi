@@ -10,10 +10,12 @@ st.set_page_config(page_title="타이타닉 생존자 대시보드", layout="wid
 st.image("./img/titanic.jpg", caption="타이타닉 - 재난에서 배우는 머신러닝", use_container_width=True)
 # column은 container로 바꿀 수도 있다.   
 
-font_path = r"font/NanumGothic-Regular.ttf"
+font_path = r"font/NanumGothic-Regular.ttf"  # hoặc đường dẫn tuyệt đối
+fm.fontManager.addfont(font_path)  # ✅ Bắt buộc để matplotlib biết font này
 
-if not os.path.exists(font_path):
-    import urllib.request
+font_prop = fm.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = font_prop.get_name()  # đúng tên trong file .ttf
+plt.rcParams['axes.unicode_minus'] = False
 
 # Load datas
 @st.cache_data
