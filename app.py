@@ -6,6 +6,10 @@ import utils
 #한글
 import matplotlib.font_manager as fm
 
+st.set_page_config(page_title="타이타닉 생존자 대시보드", layout="wide")
+st.image("./img/titanic.jpg", caption="타이타닉 - 재난에서 배우는 머신러닝", use_container_width=True)
+# column은 container로 바꿀 수도 있다.   
+
 fm.fontManager.addfont('./font/NanumGothic-Regular.ttf')
 fm.fontManager.addfont('./font/NanumGothic-Bold.ttf')
 fm.fontManager.addfont('./font/NanumGothic-ExtraBold.ttf')
@@ -23,9 +27,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.set_page_config(page_title="타이타닉 생존자 대시보드", layout="wide")
-st.image("./img/titanic.jpg", caption="타이타닉 - 재난에서 배우는 머신러닝", use_container_width=True)
-# column은 container로 바꿀 수도 있다.   
 
 # Load datas
 @st.cache_data
