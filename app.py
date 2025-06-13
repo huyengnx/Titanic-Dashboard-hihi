@@ -14,7 +14,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-font_path =  './fonts/NanumGothic.ttf'
+font_path =  './font/NanumGothic.ttf'
 fontprop = fm.FontProperties(fname=font_path)
 
 plt.rcParams['font.family'] = fontprop.get_name()
