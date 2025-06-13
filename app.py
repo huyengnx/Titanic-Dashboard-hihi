@@ -10,17 +10,10 @@ st.set_page_config(page_title="타이타닉 생존자 대시보드", layout="wid
 st.image("./img/titanic.jpg", caption="타이타닉 - 재난에서 배우는 머신러닝", use_container_width=True)
 # column은 container로 바꿀 수도 있다.   
 
-font_path = './font/NanumGothic-Regular.ttf'
-fm.fontManager.addfont(font_path)
-nanum_font = fm.FontProperties(fname=font_path)
+font_path = r"font/NanumGothic-Regular.ttf"
 
-st.markdown("""
-    <style>
-    html, body, [class*="css"]  {
-        font-family: 'Nanum Gothic', sans-serif;
-    }
-    </style>
-""", unsafe_allow_html=True)
+if not os.path.exists(font_path):
+    import urllib.request
 
 # Load datas
 @st.cache_data
