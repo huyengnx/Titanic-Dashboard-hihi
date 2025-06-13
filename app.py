@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import matplotlib.text as mtext
 import seaborn as sns
 import utils
-#한글
-import matplotlib.font_manager as fm
 
 st.set_page_config(page_title="타이타닉 생존자 대시보드", layout="wide")
 st.image("./img/titanic.jpg", caption="타이타닉 - 재난에서 배우는 머신러닝", use_container_width=True)
@@ -14,9 +14,14 @@ font_path = './font/NanumGothic-Regular.ttf'
 fm.fontManager.addfont(font_path)
 nanum_font = fm.FontProperties(fname=font_path)
 
-# Set default sans-serif font globally
-plt.rcParams['font.sans-serif'] = [nanum_font.get_name()]
-plt.rcParams['axes.unicode_minus'] = False
+old_text_init = mtext.Text.__init__
+
+def new_text_init(self, *args, **kwargs):
+    if 'fontproperties' not in kwargs:
+        kwargs['fontproperties'] = nanum_font
+    old_text_init(self, *args, **kwargs)
+
+mtext.Text.__init__ = new_text_init
 
 # Set font for Streamlit CSS
 st.markdown("""
